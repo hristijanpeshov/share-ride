@@ -1,0 +1,102 @@
+<div class="container my-5 text-center">
+  <div class="row">
+    <h1>Здраво!</h1>
+  </div>
+
+  <div class="row">
+    <h3>Ние сакаме да ги направиме твоите патувања подобри</h3>
+  </div>
+
+  <div class="row">
+    <h3>Пополни ја формата и сподели превоз со само неколку клика</h3>
+  </div>
+</div>
+
+<div class="container" *ngIf="show >= 0">
+  <div class="row">
+      <div class="card box-shadow">
+          <div class="card-body">
+            <h2 class="card-text text-center" *ngIf="show == 0">Изберете Дестинација</h2>
+            <div class="text-center my-5 form-group">
+              <input class="form-control m-auto w-50 my-3" type="text" placeholder="Destination" [disabled]="show != 0" [value]="endLocation" (change)="saveDestination($event)">
+              <button class="btn btn-primary btn-lg mx-5" *ngIf="show == 0" (click)="next()">Следно</button>
+            </div>
+            <div class="text-center my-5 form-group">
+              <button id="0" class="btn btn-warning btn-lg m-auto text-white" *ngIf="show > 0" (click)="divClicked($event)">Промени</button>
+              <p class="m-auto text-danger" *ngIf="endLocation == '' && show > 0">Дестинацијата е задолжителна!</p>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="show >= 1">
+  <div class="row">
+    <div class="card box-shadow">
+        <div class="card-body">
+          <h2 class="card-text text-center" *ngIf="show == 1">Изберете Почетна Локација</h2>
+          <div class="text-center my-5 form-group">
+            <input class="form-control m-auto w-50 my-3" type="text" placeholder="Start Location" [disabled]="show != 1" [value]="startLocation" (change)="saveStartLocation($event)">
+            <button class="btn btn-outline-secondary btn-lg mx-5" *ngIf="show == 1" (click)="back()">Назад</button>
+            <button class="btn btn-primary btn-lg mx-5" *ngIf="show == 1" (click)="next()">Следно</button>
+          </div>
+          <div class="text-center my-5 form-group">
+            <button id="1" class="btn btn-warning btn-lg m-auto text-white" *ngIf="show > 1" (click)="divClicked($event)">Промени</button>
+            <p class="m-auto text-danger" *ngIf="startLocation == '' && show > 1">Почетната локација е задолжителна!</p>
+          </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container" *ngIf="show >= 2">
+  <div class="row">
+    <div class="card box-shadow">
+        <div class="card-body">
+          <h2 class="card-text text-center" *ngIf="show == 2">Изберете Датум</h2>
+          <div class="text-center my-5 form-group">
+            <input class="form-control m-auto w-50 my-3" type="date" min="{{ today }}" placeholder="Start Location" [disabled]="show != 2" [value]="dateSelected" (change)="saveDate($event)">
+            <button class="btn btn-outline-secondary btn-lg mx-5" *ngIf="show == 2" (click)="back()">Назад</button>
+            <button class="btn btn-primary btn-lg mx-5" *ngIf="show == 2" (click)="next()">Следно</button>
+          </div>
+          <div class="text-center my-5 form-group">
+            <button id="2" class="btn btn-warning btn-lg m-auto text-white" *ngIf="show > 2" (click)="divClicked($event)">Промени</button>
+            <p class="m-auto text-danger" *ngIf="dateSelected == '' && show > 2">Датумот е задолжителен!</p>
+          </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container" *ngIf="show >= 3">
+  <div class="row">
+    <div class="card box-shadow">
+        <div class="card-body">
+          <h2 class="card-text text-center" *ngIf="show == 3">Изберете Време</h2>
+          <div class="text-center my-5 form-group">
+            <input class="form-control m-auto w-50 my-3" type="time" placeholder="Start Location" [disabled]="show != 3"  [value]="timeSelected" (change)="saveTime($event)">
+            <button class="btn btn-outline-secondary btn-lg mx-5" *ngIf="show == 3" (click)="back()">Назад</button>
+            <button class="btn btn-primary btn-lg mx-5" *ngIf="show == 3" (click)="next()">Следно</button>
+          </div>
+          <div class="text-center my-5 form-group">
+            <button id="3" class="btn btn-warning btn-lg m-auto text-white" *ngIf="show > 3" (click)="divClicked($event)">Промени</button>
+            <p class="m-auto text-danger" *ngIf="timeSelected == '' && show > 3">Времето е задолжително!</p>
+          </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container" style="margin-bottom: 120px;" *ngIf="show == 4">
+  <div class="row">
+    <div class="card box-shadow">
+        <div class="card-body">
+          <h2 class="card-text text-center">Потврдете ја резервацијата</h2>
+          <div class="text-center my-5 form-group">
+            <button class="btn btn-danger btn-lg mx-5" (click)="confirmBox()">Откажи</button>
+            <button class="btn btn-primary btn-lg mx-5" (click)="submitYes()" [disabled]="!valid">Потврди</button>
+          </div>
+        </div>
+    </div>
+</div>
+</div>

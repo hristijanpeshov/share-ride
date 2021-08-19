@@ -1,0 +1,38 @@
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand mx-4" routerLink="/home">Share a Ride</a>
+  <button class="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-between">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Дома</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/trips">Мои Патувања</a>
+      </li>
+    </ul>
+    <!-- <form class="container">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-2">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+      </div>
+    </form> -->
+    <ul class="navbar-nav mr-auto mx-4">
+      <li class="nav-item active">
+        <a class="nav-link">Најави се</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Регистрирај се</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
