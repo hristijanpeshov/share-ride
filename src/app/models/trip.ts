@@ -8,6 +8,7 @@ export class Trip {
   time: string;
   type: TripType;
   rated: number;
+  payingMethod: string;
 
   constructor(
     id: number,
@@ -15,7 +16,8 @@ export class Trip {
     to: string,
     date: string,
     time: string,
-    type: TripType
+    type: TripType,
+    payingMethod: string
   ) {
     this.id = id;
     this.from = from;
@@ -23,6 +25,7 @@ export class Trip {
     this.date = date;
     this.time = time;
     this.type = type;
+    this.payingMethod = payingMethod;
     this.rated = 0;
   }
 }

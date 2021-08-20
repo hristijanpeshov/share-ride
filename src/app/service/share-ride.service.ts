@@ -9,9 +9,9 @@ export class ShareRideService {
   nextId: number = 4;
 
   trips: Trip[] = [
-    new Trip(1, 'Скопје', 'Велес', '2021-05-30', '15:30', TripType.PASSENGER),
-    new Trip(2, 'Скопје', 'Берово', '2021-05-01', '11:20', TripType.PASSENGER),
-    new Trip(3, 'Скопје', 'Битола', '2021-10-11', '15:00', TripType.DRIVER)
+    new Trip(1, 'Скопје', 'Велес', '2021-05-30', '15:30', TripType.PASSENGER, "Кеш"),
+    new Trip(2, 'Скопје', 'Берово', '2021-05-01', '11:20', TripType.PASSENGER, "Картичка"),
+    new Trip(3, 'Скопје', 'Битола', '2021-10-11', '15:00', TripType.DRIVER, "")
   ];
 
   getTimeNow(): string {
@@ -45,16 +45,22 @@ export class ShareRideService {
     return yyyy + '-' + mm + '-' + dd;
   }
 
+  findById(id: number) {
+    return this.trips.find((s) => s.id == id);
+  }
+
   saveNewTrip(
     destination: string,
     startLocation: string,
     date: string,
     time: string,
-    type: TripType
+    type: TripType,
+    payingMethod: string
   ) {
     this.trips.push(
-      new Trip(this.nextId++, destination, startLocation, date, time, type)
+      new Trip(this.nextId++, destination, startLocation, date, time, type, payingMethod)
     );
+    return this.nextId - 1;
   }
 
   deleteFromList(id: number) {

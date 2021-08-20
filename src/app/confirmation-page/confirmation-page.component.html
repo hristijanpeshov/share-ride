@@ -1,0 +1,37 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="card box-shadow">
+      <div class="card-body">
+        <h1 class="card-text text-center text-success">Вашата резервација е успешно направена!</h1>
+        <h2 class="card-text text-center">Преглед на резервацијата</h2>
+        <div class="text-center my-5 form-group">
+          <p>
+            <span class="display-6"> Дестинација: </span>
+            <span class="display-6">
+              {{ trip?.to }}
+            </span>
+          </p>
+          <p>
+            <span class="display-6"> Почетна локација: </span>
+            <span class="display-6">
+              {{ trip?.from }}
+            </span>
+          </p>
+          <p>
+            <span class="display-6"> Датум: </span>
+            <span class="display-6">
+              {{ trip?.date }}
+            </span>
+          </p>
+          <p>
+            <span class="display-6"> Време: </span>
+            <span class="display-6">
+              {{ trip?.time }}
+            </span>
+          </p>
+          <button class="btn btn-primary btn-lg mx-5 my-4" routerLink="/trips">Отвори Мои Патувања</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -87,6 +87,7 @@
 </div>
 </div>
 
+
 <div class="container" style="margin-bottom: 120px;" *ngIf="show == 4">
   <div class="row">
     <div class="card box-shadow">
@@ -94,9 +95,43 @@
           <h2 class="card-text text-center">Потврдете ја резервацијата</h2>
           <div class="text-center my-5 form-group">
             <button class="btn btn-danger btn-lg mx-5" (click)="confirmBox()">Откажи</button>
-            <button class="btn btn-primary btn-lg mx-5" (click)="submitYes()" [disabled]="!valid">Потврди</button>
+            <button class="btn btn-primary btn-lg mx-5" (click)="payingNext()" [disabled]="!valid">Премини на наплата</button>
           </div>
         </div>
     </div>
 </div>
+</div>
+
+<div class="container" *ngIf="show == -1">
+  <div class="row">
+      <div class="card box-shadow">
+          <div class="card-body">
+            <h2 class="card-text text-center">Изберете начин на наплата</h2>
+            <div class="text-center my-5 form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="payingoptions" id="Кеш" value="Кеш" (click)="savePayingMethod($event)" [checked]="payingMethod=='Кеш'">
+                <label class="form-check-label  display-6" for="Кеш">Кеш</label>
+              </div>
+              <i class="fa fa-suitcase fa-3x" style="margin-right: 70px;"></i>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="payingoptions" id="Картичка" value="Картичка" (click)="savePayingMethod($event)" [checked]="payingMethod=='Картичка'">
+                <label class="form-check-label display-6" for="Картичка">Картичка</label>
+              </div>
+              <i class="fa fa-credit-card fa-3x" style="margin-right: 70px;"></i>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="payingoptions" id="Е-Паричник" value="Е-Паричник" (click)="savePayingMethod($event)" [checked]="payingMethod=='Е-Паричник'">
+                <label class="form-check-label display-6" for="Е-Паричник">Е-Паричник</label>
+              </div>
+              <i class="fa fa-cc-paypal fa-3x"></i>
+              
+        </div>
+        <h2 class="card-text text-center">Потврдете ја резервацијата</h2>
+          <div class="text-center my-5 form-group">
+            <button class="btn btn-danger btn-lg mx-5" (click)="confirmBox()">Откажи</button>
+            <button class="btn btn-outline-secondary btn-lg mx-5" (click)="backToInfo()">Назад</button>
+            <button class="btn btn-primary btn-lg mx-5" (click)="submitYes()" [disabled]="!validPaying">Потврди</button>
+          </div>
+            </div>
+      </div>
+  </div>
 </div>

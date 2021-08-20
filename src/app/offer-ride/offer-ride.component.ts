@@ -69,14 +69,15 @@ export class OfferRideComponent implements OnInit {
   }
 
   submit() {
-    this.service.saveNewTrip(
+    var tripId = this.service.saveNewTrip(
       this.startLocation,
       this.endLocation,
       this.dateSelected,
       this.timeSelected,
-      TripType.DRIVER
+      TripType.DRIVER,
+      ""
     );
-    this.router.navigate(['trips']);
+    this.router.navigate([`confirmation/${tripId}`]);
   }
 
   confirmBox() {

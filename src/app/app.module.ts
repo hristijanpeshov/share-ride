@@ -15,6 +15,7 @@ import {
   ConfirmBoxConfigModule,
   ToastNotificationConfigModule,
 } from '@costlydeveloper/ngx-awesome-popup';
+import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {
     FindRideComponent,
     OfferRideComponent,
     TripsComponent,
+    ConfirmationPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@
         <th scope="col">Од <i class="fa fa-map-marker fa-2x"></i></th>
         <th scope="col">До <i class="fa fa-map-marker fa-2x"></i></th>
         <th scope="col">Датум и време <i class="fa fa-calendar fa-2x"></i></th>
+        <th scope="col">Начин на плaќање <i class="fa fa-shopping-cart fa-2x"></i></th>
         <th scope="col">Акции <i class="fa fa-cogs fa-2x"></i></th>
       </tr>
     </thead>
@@ -18,17 +19,20 @@
           <i class="fa fa-hourglass-start fa-2x" *ngIf="!passed(trip)"></i>
           <i class="fa fa-hourglass-end fa-2x" *ngIf="passed(trip)"></i>
         </th>
-        <td>{{ trip.from }}</td>
-        <td>{{ trip.to }}</td>
-        <td>{{ trip.date }} {{ trip.time }}</td>
+        <td style="font-size: x-large;">{{ trip.from }}</td>
+        <td style="font-size: x-large;">{{ trip.to }}</td>
+        <td style="font-size: x-large;">{{ trip.date }} {{ trip.time }}</td>
+        <td style="font-size: x-large;">
+          {{ trip.payingMethod }}
+          <i class="fa fa-suitcase fa-1x mx-3" *ngIf="trip.payingMethod=='Кеш'"></i>
+          <i class="fa fa-credit-card fa-1x mx-3" *ngIf="trip.payingMethod=='Картичка'"></i>
+          <i class="fa fa-cc-paypal fa-1x mx-3" *ngIf="trip.payingMethod=='Е-Паричник'"></i>
+        </td>
         <td *ngIf="passed(trip)">
           <div *ngIf="trip.rated != 0">
             <i class="fa fa-star fa-3x mx-2" style="color: orange;" *ngFor="let i of Arr(trip.rated).fill(1)"></i>
           </div>
           <div *ngIf="trip.rated == 0">
-            <!-- <button class="btn btn-success btn-lg" style="margin-right: 20px;" *ngIf="trip.rated == 0">
-              Оцени го патувањето
-            </button> -->
             <div class="stars">
               <form action="">
                 <input
@@ -100,17 +104,11 @@
     <div class="col">
       <i class="fa fa-user fa-2x mx-3"></i>
       <span class="display-6">Патник</span>
-          <!-- <i class="fa fa-car fa-2x" *ngIf="trip.type === 1"></i>
-          <i class="fa fa-hourglass-start fa-2x" *ngIf="!passed(trip)"></i>
-          <i class="fa fa-hourglass-end fa-2x" *ngIf="passed(trip)"></i> -->
     </div>
 
     <div class="col">
       <i class="fa fa-car fa-2x mx-3"></i>
       <span class="display-6">Возач</span>
-          <!-- <i class="fa fa-car fa-2x" *ngIf="trip.type === 1"></i>
-          <i class="fa fa-hourglass-start fa-2x" *ngIf="!passed(trip)"></i>
-          <i class="fa fa-hourglass-end fa-2x" *ngIf="passed(trip)"></i> -->
     </div>
 
     <div class="col">
@@ -121,9 +119,6 @@
     <div class="col">
       <i class="fa fa-hourglass-end fa-2x mx-3"></i>
       <span class="display-6">Поминато</span>
-          <!-- <i class="fa fa-car fa-2x" *ngIf="trip.type === 1"></i>
-          <i class="fa fa-hourglass-start fa-2x" *ngIf="!passed(trip)"></i>
-          <i class="fa fa-hourglass-end fa-2x" *ngIf="passed(trip)"></i> -->
     </div>
   </div>
 </div>

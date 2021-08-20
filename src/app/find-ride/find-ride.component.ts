@@ -23,7 +23,9 @@ export class FindRideComponent implements OnInit {
   dateSelected = '';
   startLocation = '';
   endLocation = '';
+  payingMethod = '';
   valid = false;
+  validPaying = false;
   show = 0;
 
   constructor(
@@ -66,6 +68,19 @@ export class FindRideComponent implements OnInit {
     this.timeSelected = e.target.value;
   }
 
+  payingNext() {
+    this.show = -1;
+  }
+
+  backToInfo() {
+    this.show = 4;
+  }
+
+  savePayingMethod(e: any) {
+    this.payingMethod = e.target.id;
+    this.validPaying = this.checkValidationOnceAgain();
+  }
+
   checkValidation() {
     return (
       this.startLocation != '' &&
@@ -75,15 +90,26 @@ export class FindRideComponent implements OnInit {
     );
   }
 
+  checkValidationOnceAgain() {
+    return (
+      this.startLocation != '' &&
+      this.endLocation != '' &&
+      this.dateSelected != '' &&
+      this.timeSelected != '' &&
+      this.payingMethod != ''
+    );
+  }
+
   submit() {
-    this.service.saveNewTrip(
+    var tripId = this.service.saveNewTrip(
       this.startLocation,
       this.endLocation,
       this.dateSelected,
       this.timeSelected,
-      TripType.PASSENGER
+      TripType.PASSENGER,
+      this.payingMethod
     );
-    this.router.navigate(['trips']);
+    this.router.navigate([`confirmation/${tripId}`]);
   }
 
   confirmBox() {
@@ -97,7 +123,7 @@ export class FindRideComponent implements OnInit {
     });
 
     const subscription = confirmBox.openConfirmBox$().subscribe((resp) => {
-      if (resp.Success) this.router.navigate(['home']);
+      if (resp.Success) {this.router.navigate(['home'])};
       subscription.unsubscribe();
     });
   }
